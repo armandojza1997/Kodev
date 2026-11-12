@@ -7,6 +7,7 @@ export const Hero: React.FC = () => {
     <>
       <div className="k-progress" aria-hidden="true"></div>
 
+      {/* Sticky Header */}
       <div className="k-sticky" style={{ background: 'rgba(12,14,13,.96)', color: '#F5F7F8', borderBottom: '1px solid rgba(255,255,255,.08)' }}>
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '1352px', margin: '0 auto', padding: '0 clamp(16px,3vw,44px)', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
           <a href="#top" aria-label="Kodev, ir al inicio" style={{ fontFamily: "Michroma, Arial, sans-serif", fontSize: '16px', letterSpacing: '.06em', textDecoration: 'none', color: '#F5F7F8' }}>KODEV</a>
@@ -29,7 +30,7 @@ export const Hero: React.FC = () => {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Abrir menú de navegación"
               className="k-mobile-menu-btn"
-              style={{ display: 'none', width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(255,255,255,.1)', border: '1px solid rgba(255,255,255,.2)', color: '#F5F7F8', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+              style={{ display: 'none', width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(255,255,255,.1)', border: '1px solid rgba(255,255,255,.2)', color: '#F5F7F8', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 110 }}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 {mobileMenuOpen ? <path d="M18 6L6 18M6 6l12 12" /> : <path d="M3 12h18M3 6h18M3 18h18" />}
@@ -37,18 +38,55 @@ export const Hero: React.FC = () => {
             </button>
           </div>
         </div>
-        {mobileMenuOpen && (
-          <div style={{ background: '#0C0E0D', borderTop: '1px solid rgba(255,255,255,.08)', padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <a href="#servicios" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7F8', textDecoration: 'none', fontSize: '16px', fontWeight: 500 }}>Servicios</a>
-            <a href="#agentes" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7F8', textDecoration: 'none', fontSize: '16px', fontWeight: 500 }}>Especialidades</a>
-            <a href="#metodo" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7F8', textDecoration: 'none', fontSize: '16px', fontWeight: 500 }}>Método</a>
-            <a href="#flujo" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7F8', textDecoration: 'none', fontSize: '16px', fontWeight: 500 }}>Pipeline en vivo</a>
-            <a href="#planes" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7F8', textDecoration: 'none', fontSize: '16px', fontWeight: 500 }}>Planes</a>
-            <a href="#contacto" onClick={() => setMobileMenuOpen(false)} style={{ color: '#C6F23A', textDecoration: 'none', fontSize: '16px', fontWeight: 600 }}>Contacto & Consultoría</a>
-          </div>
-        )}
       </div>
 
+      {/* Mobile Menu Overlay / Drawer */}
+      {mobileMenuOpen && (
+        <div className="k-mobile-drawer" style={{ position: 'fixed', top: '64px', left: 0, right: 0, bottom: 0, background: '#0C0E0D', color: '#F5F7F8', zIndex: 105, padding: '24px clamp(16px,4vw,32px)', display: 'flex', flexDirection: 'column', gap: '20px', overflowY: 'auto', boxShadow: '0 30px 60px rgba(0,0,0,.8)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,.12)', paddingBottom: '14px' }}>
+            <div>
+              <span style={{ fontFamily: "Michroma, Arial, sans-serif", fontSize: '16px', color: '#F5F7F8', letterSpacing: '.06em' }}>KODEV</span>
+              <p style={{ margin: '4px 0 0', fontSize: '12.5px', color: '#8E959B' }}>Desarrollo web y software de alto impacto</p>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <a href="#servicios" onClick={() => setMobileMenuOpen(false)} style={{ display: 'flex', flexDirection: 'column', gap: '3px', padding: '14px 16px', borderRadius: '14px', background: '#161A19', border: '1px solid rgba(255,255,255,.06)', textDecoration: 'none' }}>
+              <span style={{ fontSize: '16px', fontWeight: 600, color: '#F5F7F8' }}>01. Servicios & Soluciones</span>
+              <span style={{ fontSize: '13px', color: '#A2A8AE' }}>Apps Web, SaaS, E-commerce y Core Web Vitals</span>
+            </a>
+            <a href="#agentes" onClick={() => setMobileMenuOpen(false)} style={{ display: 'flex', flexDirection: 'column', gap: '3px', padding: '14px 16px', borderRadius: '14px', background: '#161A19', border: '1px solid rgba(255,255,255,.06)', textDecoration: 'none' }}>
+              <span style={{ fontSize: '16px', fontWeight: 600, color: '#F5F7F8' }}>02. Especialidades & Stack</span>
+              <span style={{ fontSize: '13px', color: '#A2A8AE' }}>Frontend, Backend, Cloud y Sistemas de Diseño</span>
+            </a>
+            <a href="#metodo" onClick={() => setMobileMenuOpen(false)} style={{ display: 'flex', flexDirection: 'column', gap: '3px', padding: '14px 16px', borderRadius: '14px', background: '#161A19', border: '1px solid rgba(255,255,255,.06)', textDecoration: 'none' }}>
+              <span style={{ fontSize: '16px', fontWeight: 600, color: '#F5F7F8' }}>03. Método de Entrega</span>
+              <span style={{ fontSize: '13px', color: '#A2A8AE' }}>De la idea inicial al despliegue en producción</span>
+            </a>
+            <a href="#flujo" onClick={() => setMobileMenuOpen(false)} style={{ display: 'flex', flexDirection: 'column', gap: '3px', padding: '14px 16px', borderRadius: '14px', background: '#161A19', border: '1px solid rgba(255,255,255,.06)', textDecoration: 'none' }}>
+              <span style={{ fontSize: '16px', fontWeight: 600, color: '#F5F7F8' }}>04. Pipeline CI/CD en Vivo</span>
+              <span style={{ fontSize: '13px', color: '#A2A8AE' }}>Mira a nuestro equipo compilar y desplegar</span>
+            </a>
+            <a href="#planes" onClick={() => setMobileMenuOpen(false)} style={{ display: 'flex', flexDirection: 'column', gap: '3px', padding: '14px 16px', borderRadius: '14px', background: '#161A19', border: '1px solid rgba(255,255,255,.06)', textDecoration: 'none' }}>
+              <span style={{ fontSize: '16px', fontWeight: 600, color: '#F5F7F8' }}>05. Modelos de Colaboración</span>
+              <span style={{ fontSize: '13px', color: '#A2A8AE' }}>Web corporativa, SaaS o Squad dedicado</span>
+            </a>
+            <a href="#contacto" onClick={() => setMobileMenuOpen(false)} style={{ display: 'flex', flexDirection: 'column', gap: '3px', padding: '14px 16px', borderRadius: '14px', background: '#161A19', border: '1px solid rgba(255,255,255,.06)', textDecoration: 'none' }}>
+              <span style={{ fontSize: '16px', fontWeight: 600, color: '#F5F7F8' }}>06. Preguntas Frecuentes & FAQ</span>
+              <span style={{ fontSize: '13px', color: '#A2A8AE' }}>Propiedad del código, plazos y soporte</span>
+            </a>
+          </div>
+
+          <div style={{ paddingTop: '8px', paddingBottom: '32px' }}>
+            <a href="#contacto" onClick={() => setMobileMenuOpen(false)} className="k-btn" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', height: '52px', borderRadius: '999px', background: '#C6F23A', color: '#0C0E0D', textDecoration: 'none', fontSize: '15px', fontWeight: 600 }}>
+              <span>Reservar consultoría técnica</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* Hero Header Section */}
       <header id="top" className="hero" style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(180deg,#D8DBE0 0%,#CED2D7 30%,#A3A9AF 50%,#555B5E 66%,#1B1F1E 82%,#0C0E0D 100%)' }}>
         <div className="hero-inner" style={{ position: 'relative', maxWidth: '1352px', margin: '0 auto', padding: '0 clamp(16px,3vw,44px)', minHeight: '900px', display: 'flex', flexDirection: 'column' }}>
           <nav aria-label="Principal" className="k-down" style={{ position: 'relative', zIndex: 4, display: 'flex', alignItems: 'center', gap: '16px 20px', flexWrap: 'wrap', padding: '24px 0' }}>
@@ -74,7 +112,7 @@ export const Hero: React.FC = () => {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Menú principal"
               className="k-hero-menu-btn"
-              style={{ display: 'none', marginLeft: 'auto', width: '48px', height: '48px', borderRadius: '14px', background: 'rgba(12,14,13,.12)', border: '1px solid rgba(12,14,13,.3)', color: '#0C0E0D', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+              style={{ display: 'none', marginLeft: 'auto', width: '48px', height: '48px', borderRadius: '14px', background: 'rgba(12,14,13,.12)', border: '1px solid rgba(12,14,13,.3)', color: '#0C0E0D', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 10 }}
             >
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 {mobileMenuOpen ? <path d="M18 6L6 18M6 6l12 12" /> : <path d="M3 12h18M3 6h18M3 18h18" />}

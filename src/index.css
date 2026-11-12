@@ -48,6 +48,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .k-progress{position:fixed;left:0;right:0;top:0;height:3px;background:#C6F23A;transform-origin:left;transform:scaleX(var(--pg,0));z-index:60;pointer-events:none}
 .k-sticky{position:fixed;left:0;right:0;top:0;z-index:55;transform:translateY(-110%);visibility:hidden;transition:transform .55s cubic-bezier(.2,.7,.2,1),visibility 0s linear .55s}
 .k-nav-show .k-sticky{transform:none;visibility:visible;transition:transform .55s cubic-bezier(.2,.7,.2,1),visibility 0s}
+.k-mobile-menu-btn{display:none}
+.k-hero-menu-btn{display:none}
 
 /* ---------- hero ---------- */
 .k-page .hero-inner{min-height:max(640px,100vh) !important;min-height:max(640px,100svh) !important}
@@ -215,8 +217,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .k-wm{overflow:hidden}
 .k-wm svg{transition:transform 1.5s cubic-bezier(.7,0,.2,1)}
 .rv-on .k-wmw:not(.rv-in) .k-wm svg{transform:translateY(105%)}
-.k-cross{transition:rotate 1.4s cubic-bezier(.2,.7,.2,1) .3s,opacity 1s ease .3s}
-.rv-on .k-wmw:not(.rv-in) .k-cross{rotate:-180deg;opacity:0}
+@keyframes k-drawer{from{opacity:0;transform:translateY(-14px);scale:.98}to{opacity:1;transform:none;scale:1}}
+.k-mobile-drawer{animation:k-drawer .35s cubic-bezier(.2,.7,.2,1) both}
 
 @media (prefers-reduced-motion:reduce){
 *,*::before,*::after{animation:none !important;transition:none !important}
