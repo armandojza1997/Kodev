@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export const Hero: React.FC = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <>
       <div className="k-progress" aria-hidden="true"></div>
@@ -15,26 +17,49 @@ export const Hero: React.FC = () => {
             <a href="#flujo" style={{ textDecoration: 'none' }}>Pipeline</a>
             <a href="#planes" style={{ textDecoration: 'none' }}>Planes</a>
           </nav>
-          <a className="k-btn" href="#contacto" style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', height: '44px', padding: '0 4px 0 18px', borderRadius: '999px', background: '#C6F23A', color: '#0C0E0D', textDecoration: 'none', fontSize: '14px', fontWeight: 600 }}>
-            Iniciar proyecto
-            <span style={{ width: '36px', height: '36px', borderRadius: '50%', background: '#0C0E0D', color: '#C6F23A', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style={{ strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' }} aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-            </span>
-          </a>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <a className="k-btn" href="#contacto" style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', height: '44px', padding: '0 4px 0 18px', borderRadius: '999px', background: '#C6F23A', color: '#0C0E0D', textDecoration: 'none', fontSize: '14px', fontWeight: 600 }}>
+              Iniciar proyecto
+              <span style={{ width: '36px', height: '36px', borderRadius: '50%', background: '#0C0E0D', color: '#C6F23A', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style={{ strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' }} aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+              </span>
+            </a>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Abrir menú de navegación"
+              className="k-mobile-menu-btn"
+              style={{ display: 'none', width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(255,255,255,.1)', border: '1px solid rgba(255,255,255,.2)', color: '#F5F7F8', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {mobileMenuOpen ? <path d="M18 6L6 18M6 6l12 12" /> : <path d="M3 12h18M3 6h18M3 18h18" />}
+              </svg>
+            </button>
+          </div>
         </div>
+        {mobileMenuOpen && (
+          <div style={{ background: '#0C0E0D', borderTop: '1px solid rgba(255,255,255,.08)', padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <a href="#servicios" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7F8', textDecoration: 'none', fontSize: '16px', fontWeight: 500 }}>Servicios</a>
+            <a href="#agentes" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7F8', textDecoration: 'none', fontSize: '16px', fontWeight: 500 }}>Especialidades</a>
+            <a href="#metodo" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7F8', textDecoration: 'none', fontSize: '16px', fontWeight: 500 }}>Método</a>
+            <a href="#flujo" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7F8', textDecoration: 'none', fontSize: '16px', fontWeight: 500 }}>Pipeline en vivo</a>
+            <a href="#planes" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7F8', textDecoration: 'none', fontSize: '16px', fontWeight: 500 }}>Planes</a>
+            <a href="#contacto" onClick={() => setMobileMenuOpen(false)} style={{ color: '#C6F23A', textDecoration: 'none', fontSize: '16px', fontWeight: 600 }}>Contacto & Consultoría</a>
+          </div>
+        )}
       </div>
 
       <header id="top" className="hero" style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(180deg,#D8DBE0 0%,#CED2D7 30%,#A3A9AF 50%,#555B5E 66%,#1B1F1E 82%,#0C0E0D 100%)' }}>
         <div className="hero-inner" style={{ position: 'relative', maxWidth: '1352px', margin: '0 auto', padding: '0 clamp(16px,3vw,44px)', minHeight: '900px', display: 'flex', flexDirection: 'column' }}>
           <nav aria-label="Principal" className="k-down" style={{ position: 'relative', zIndex: 4, display: 'flex', alignItems: 'center', gap: '16px 20px', flexWrap: 'wrap', padding: '24px 0' }}>
-            <div className="k-nav" style={{ flex: '1 1 0', minWidth: '260px', display: 'flex', gap: 'clamp(18px,2.4vw,36px)', flexWrap: 'wrap', fontSize: '15px' }}>
+            <div className="k-nav k-desktop-nav-links" style={{ flex: '1 1 0', minWidth: '260px', display: 'flex', gap: 'clamp(18px,2.4vw,36px)', flexWrap: 'wrap', fontSize: '15px' }}>
               <a href="#servicios" style={{ textDecoration: 'none', color: '#0C0E0D' }}>Servicios</a>
               <a href="#agentes" style={{ textDecoration: 'none', color: '#0C0E0D' }}>Especialidades</a>
               <a href="#metodo" style={{ textDecoration: 'none', color: '#0C0E0D' }}>Método</a>
               <a href="#planes" style={{ textDecoration: 'none', color: '#0C0E0D' }}>Planes</a>
             </div>
             <a className="nav-logo" href="#top" aria-label="Kodev, ir al inicio" style={{ flex: '0 0 auto', fontFamily: "Michroma, Arial, sans-serif", fontSize: '19px', letterSpacing: '.06em', textDecoration: 'none', color: '#0C0E0D' }}>KODEV</a>
-            <div style={{ flex: '1 1 0', minWidth: '260px', display: 'flex', justifyContent: 'flex-end', gap: '10px', flexWrap: 'wrap' }}>
+            <div className="k-desktop-cta" style={{ flex: '1 1 0', minWidth: '260px', display: 'flex', justifyContent: 'flex-end', gap: '10px', flexWrap: 'wrap' }}>
               <a className="k-btn" href="#contacto" style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', textDecoration: 'none', color: '#0C0E0D', fontSize: '15px' }}>
                 <span style={{ width: '44px', height: '44px', borderRadius: '50%', border: '1px solid rgba(12,14,13,.45)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" style={{ strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' }} aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
                 <span style={{ height: '44px', padding: '0 22px', borderRadius: '999px', border: '1px solid rgba(12,14,13,.45)', display: 'inline-flex', alignItems: 'center' }}>Pedir presupuesto</span>
@@ -44,6 +69,17 @@ export const Hero: React.FC = () => {
                 <span style={{ height: '44px', padding: '0 22px', borderRadius: '999px', border: '1px solid rgba(12,14,13,.45)', display: 'inline-flex', alignItems: 'center' }}>Contacto</span>
               </a>
             </div>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Menú principal"
+              className="k-hero-menu-btn"
+              style={{ display: 'none', marginLeft: 'auto', width: '48px', height: '48px', borderRadius: '14px', background: 'rgba(12,14,13,.12)', border: '1px solid rgba(12,14,13,.3)', color: '#0C0E0D', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                {mobileMenuOpen ? <path d="M18 6L6 18M6 6l12 12" /> : <path d="M3 12h18M3 6h18M3 18h18" />}
+              </svg>
+            </button>
           </nav>
           <div className="k-word" aria-hidden="true" style={{ position: 'relative', zIndex: 1, marginTop: 'clamp(12px,2.4vw,36px)' }}>
             <svg viewBox="0 0 5924 770" style={{ display: 'block', width: '100%', height: 'auto' }}><text x="0" y="760" textLength="5924" lengthAdjust="spacingAndGlyphs" style={{ fontFamily: "Michroma, Arial, sans-serif", fontSize: '1000px', fill: '#A6ABB1' }}>KODEV</text></svg>
