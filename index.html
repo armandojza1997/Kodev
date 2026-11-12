@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kodev · Estudio de desarrollo web de alto rendimiento</title>
+    <meta name="description" content="Kodev diseña, programa y despliega aplicaciones web, plataformas SaaS y sitios de alto rendimiento con la mejor arquitectura moderna." />
+    <meta property="og:title" content="Kodev · Estudio de desarrollo web de alto rendimiento" />
+    <meta property="og:description" content="Kodev diseña, programa y despliega aplicaciones web, plataformas SaaS y sitios de alto rendimiento con la mejor arquitectura moderna." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23C6F23A'/%3E%3Ctext x='16' y='23' font-family='Michroma, Arial, sans-serif' font-size='20' font-weight='bold' fill='%230C0E0D' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Michroma&family=Archivo+Black&family=DM+Serif+Display&family=Syne:wght@700&family=Space+Grotesk:wght@500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
+    <script>
+    (function(){
+      try {
+        // Prevent infinite reload loops triggered by WebSocket disconnects in iframe/proxy environments
+        var originalReload = window.location.reload.bind(window.location);
+        var lastReload = 0;
+        window.location.reload = function() {
+          var now = Date.now();
+          if (now - lastReload < 10000) {
+            console.warn('[Kodev] Prevenida recarga repetitiva automática');
+            return;
+          }
+          lastReload = now;
+          originalReload();
+        };
+
+        var r = document.documentElement;
+        r.classList.add('k-page');
+        window.__kxReveal = true;
+        if (!window.matchMedia || !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          r.classList.add('rv-on');
+        }
+      } catch(e) {}
+    })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

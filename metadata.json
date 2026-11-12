@@ -1,0 +1,6 @@
+{
+  "name": "Kodev · Estudio de desarrollo web para empresas",
+  "description": "Kodev diseña, programa y despliega aplicaciones web, plataformas SaaS y sitios de alto rendimiento con la mejor arquitectura moderna.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
